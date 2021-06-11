@@ -12,7 +12,7 @@
       <ScrollViewer>
         <StackPanel>
           <Panel>
-            <DropDown Width="200" Items="{Binding Items}" SelectionChanged="{Binding onItemSelect}">
+            <DropDown Width="200" Items="{Binding Items}">
 
             </DropDown>
           </Panel>
