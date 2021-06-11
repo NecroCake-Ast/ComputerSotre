@@ -1,0 +1,6 @@
+**/bin
+**/obj
+*proj.user
+**/.directory
+**/.vs
+**/.vscode

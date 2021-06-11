@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Комплектации";
+}
+
+@if (ViewBag.Complects != null) {
+<div class="grid justify-content-between">
+    @foreach (Complectation curComplect in ViewBag.Complects)
+    {
+        <a class="grid-element" asp-controller="Home" asp-action="Details" asp-route-id="@curComplect.id">
+            <div class="grid-element">
+                <label class="card-name">@curComplect.name</label>
+                <div class="card">
+                    <img class="card-bg" src="~/img/@(curComplect.id).png">
+                </div>
+                @if (curComplect.available)
+                {
+                    <label class="detail-header">@(string.Format("{0:C}", curComplect.price).Replace(' ', '\u00A0'))</label>
+                }
+                else
+                {
+                    <label class="detail-header">Нет&nbspв&nbspналичии</label>
+                }
+            </div>
+        </a>
+    }
+</div>
+<br/>
+}

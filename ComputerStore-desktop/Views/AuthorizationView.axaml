@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ComputerStoreDesk.Views.AuthorizationView">
+  
+  <ScrollViewer>
+    <DockPanel>
+      
+      <Panel DockPanel.Dock="Top" Height="75" Background="CornflowerBlue">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+          <TextBlock Classes="Header" VerticalAlignment="Center" Text="Comp"></TextBlock>
+          <TextBlock FontFamily="Bahnschrift SemiBold Condensed" FontSize="30" VerticalAlignment="Center" Text="uter" />
+          <TextBlock FontFamily="Bahnschrift SemiBold Condensed" FontSize="30" VerticalAlignment="Center" Text=" Store" />
+        </StackPanel>
+      </Panel>
+      
+      <Panel DockPanel.Dock="Bottom">
+        <StackPanel VerticalAlignment="Center" Spacing="20" HorizontalAlignment="Center">
+          <StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontSize="21" Text="Логин" />
+            <TextBox Text="{Binding Login}" Width="210"/>
+          </StackPanel>
+        
+          <StackPanel>
+            <TextBlock HorizontalAlignment="Center" FontSize="21" Text="Пароль" />
+            <TextBox  Text="{Binding Password}" Width="210" PasswordChar="*" />
+          </StackPanel>
+
+          <Panel>
+            <Button Classes="LoginBtn" HorizontalAlignment="Center" Command="{Binding onLoginClick}" Content="Войти" />
+          </Panel>
+        </StackPanel>
+      </Panel>
+      
+    </DockPanel>
+  </ScrollViewer>
+</UserControl>
