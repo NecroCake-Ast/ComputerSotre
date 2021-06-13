@@ -1,0 +1,67 @@
+﻿@using ComputerStoreAdmin.Models.Store
+@using ComputerStoreAdmin.Services
+@model List<StoredItem>
+
+@{
+    ViewData["Title"] = "Запасы";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Номер
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Цена
+            </th>
+            <th>
+                Дата получения
+            </th>
+            <th>
+                Адрес
+            </th>
+            <th>
+                Место
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.item)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.buy_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.buy_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.place)
+                </td>
+                <td>
+                    @Html.Label(item.isOnStorage ? "На\u00A0складе" : "На\u00A0витрине")
+                </td>
+                <td>
+                    @Html.ActionLink("Изменить", "Edit", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Удалить", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

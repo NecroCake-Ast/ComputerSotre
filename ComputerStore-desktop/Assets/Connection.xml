@@ -1,5 +1,0 @@
-﻿<DBConnect>
-  <Host>localhost</Host>
-  <Port>5432</Port>
-  <Database>computer_store</Database>
-</DBConnect>
