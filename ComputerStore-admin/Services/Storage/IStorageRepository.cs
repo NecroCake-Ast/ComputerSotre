@@ -10,5 +10,7 @@ namespace ComputerStoreAdmin.Services.Storage
         public Task Add(string userRole, StoredItem item);
         public Task Update(string userRole, StoredItem item);
         public Task Remove(string userRole, int id);
+        public Task<List<StoredItem>> Find(string userRole, StoredItemSearchData pred);
+        public Task<StoredItem> Find(string userRole, int id);
     }
 }

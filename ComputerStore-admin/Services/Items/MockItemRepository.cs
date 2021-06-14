@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ComputerStoreAdmin.Services.Items
 {
-    public class MockItemRepository : ItemRepository
+    public class MockItemRepository : IItemRepository
     {
         private List<Item> _data;
 
@@ -30,22 +30,27 @@ namespace ComputerStoreAdmin.Services.Items
             };
         }
 
-        public Task Add(Item item)
+        public Task Add(string role, Item item)
         {
             return Task.Run(() => _data.Add(item));
         }
 
-        public Task<List<Item>> List()
+        public Task<Item> Find(string role, int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<Item>> List(string role)
         {
             return Task.Run(() => new List<Item>(_data));
         }
 
-        public Task Remove(int id)
+        public Task Remove(string role, int id)
         {
             return Task.Run(() => _data.RemoveAt(_data.FindIndex(p => p.id == id)));
         }
 
-        public Task Update(Item item)
+        public Task Update(string role, Item item)
         {
             return Task.Run(() => _data[_data.FindIndex(p => p.id == item.id)] = item);
         }

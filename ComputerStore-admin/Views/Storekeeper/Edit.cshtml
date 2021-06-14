@@ -1,0 +1,27 @@
+﻿@model StoredItem
+
+@using (Html.BeginForm("Edit", "Storekeeper", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.id);
+    <div class="full-width">
+        @Html.LabelFor(m => m.id_item, "Деталь", new { @class = "display-5" })
+        <br />
+        @Html.DropDownListFor(m => m.id_item, new SelectList(ViewBag.Items, "id", "FullName"), Model.item == null ? "" : Model.item, null)
+        <br /><br />
+        @Html.LabelFor(m => m.id_item, "Стоимость", new { @class = "display-5" })
+        <br />
+        @Html.TextBoxFor(m => m.buy_price)
+        <br /><br />
+        @Html.LabelFor(m => m.id_item, "Адрес", new { @class = "display-5" })
+        <br />
+        @Html.TextBoxFor(m => m.place)
+        <br /><br />
+        @Html.LabelFor(m => m.id_item, "На складе?", new { @class = "display-5" })
+        @Html.CheckBoxFor(m => m.isOnStorage)
+        <br /><br />
+    </div>
+    <div class="full-width center-align">
+        <input type="submit" value="Обновить" />
+    </div>
+    <br />
+}

@@ -1,4 +1,5 @@
 using ComputerStoreAdmin.Services;
+using ComputerStoreAdmin.Services.Items;
 using ComputerStoreAdmin.Services.Storage;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +26,7 @@ namespace ComputerStoreAdmin
             PGContext.Configure(Configuration);
 
             services.AddSingleton<IStorageRepository>(s => new PGStorageRepository());
+            services.AddSingleton<IItemRepository>(s => new PGItemRepository());
 
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

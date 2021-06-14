@@ -1,67 +1,91 @@
-﻿@using ComputerStoreAdmin.Models.Store
-@using ComputerStoreAdmin.Services
-@model List<StoredItem>
+﻿@model StoredItemSearchData
 
 @{
     ViewData["Title"] = "Запасы";
 }
 
-<h1>List</h1>
+<div class="full-width center-align">
+    <h2>Детали в наличии</h2>
+</div>
+<div class="full-width center-align">
+    <a asp-action="Add">Добавить</a>
+</div>
 
-<p>
-    <a asp-action="Create">Добавить</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Номер
-            </th>
-            <th>
-                Название
-            </th>
-            <th>
-                Цена
-            </th>
-            <th>
-                Дата получения
-            </th>
-            <th>
-                Адрес
-            </th>
-            <th>
-                Место
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@using (Html.BeginForm("Find", "Storekeeper", FormMethod.Post))
+{
+    <div class="grid justify-content-between">
+        <div class="grid-element">
+            @Html.LabelFor(m => m.Etalon, "Название", new { @class = "display-5" })
+            <br />
+            @Html.TextBoxFor(m => m.Etalon)
+        </div>
+        <div class="grid-element">
+            @Html.LabelFor(m => m.StartDateDiap, "Начальная дата", new { @class = "display-5" })
+            <br />
+            @Html.TextBoxFor(m => m.StartDateDiap)
+        </div>
+        <div class="grid-element">
+            @Html.LabelFor(m => m.EndDateDiap, "Конечная дата", new { @class = "display-5" })
+            <br />
+            @Html.TextBoxFor(m => m.EndDateDiap)
+        </div>
+    </div>
+    <div class="full-width center-align">
+        <input type="submit" value="Найти" />
+    </div>
+    <br />
+}
+
+@if (ViewBag.Msg != null)
+{
+    <br />
+    <div class="full-width center-align">
+        <h2>@ViewBag.Msg</h2>
+    </div>
+}
+
+@if (ViewBag.List != null)
+{
+    <table class="table table-striped table-bordered">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.item)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.buy_price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.buy_date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.place)
-                </td>
-                <td>
-                    @Html.Label(item.isOnStorage ? "На\u00A0складе" : "На\u00A0витрине")
-                </td>
-                <td>
-                    @Html.ActionLink("Изменить", "Edit", new { /* id=item.PrimaryKey */ })
-                    @Html.ActionLink("Удалить", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
+                <th>Номер</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Дата получения</th>
+                <th>Адрес</th>
+                <th>Место</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (StoredItem item in ViewBag.List)
+            {
+                <tr>
+                    <td>
+                        @item.id.ToString()
+                    </td>
+                    <td>
+                        @item.item
+                    </td>
+                    <td>
+                        @item.buy_price.ToString()
+                    </td>
+                    <td>
+                        @item.buy_date.ToString()
+                    </td>
+                    <td>
+                        @item.place
+                    </td>
+                    <td>
+                        @(item.isOnStorage ? "На\u00A0складе" : "На\u00A0витрине")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Изменить", "Edit", new { id = item.id })
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

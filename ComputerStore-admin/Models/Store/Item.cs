@@ -16,6 +16,8 @@ namespace ComputerStoreAdmin.Models.Store
         public int    manufacturer_id   { get; set; }  //!< ID производителя
         public string manufacturer      { get; set; }  //!< Производитель
 
+        public string FullName { get => ToString(); }
+
         public override string ToString()
         {
             return type + " " + manufacturer + " " + name;

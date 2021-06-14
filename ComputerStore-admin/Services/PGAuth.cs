@@ -1,7 +1,7 @@
 ﻿using ComputerStoreAdmin.Models.Auth;
 using Npgsql;
 
-namespace ComputerStoreAdmin.Services.Storage
+namespace ComputerStoreAdmin.Services
 {
     public static class PGAuth
     {

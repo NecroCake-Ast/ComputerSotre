@@ -49,6 +49,16 @@ namespace ComputerStoreAdmin.Services.Storage
             return Task.Run(() => _data.Add(item));
         }
 
+        public Task<List<StoredItem>> Find(string role, StoredItemSearchData pred)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<StoredItem> Find(string userRole, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<StoredItem>> List(string userRole)
         {
             return Task.Run(() => new List<StoredItem>(_data));
