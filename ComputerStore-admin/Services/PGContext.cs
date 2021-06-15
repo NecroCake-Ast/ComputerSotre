@@ -1,18 +1,17 @@
-﻿using ComputerStoreAdmin.Models.Store;
+﻿using ComputerStoreAdmin.Models.Admin;
+using ComputerStoreAdmin.Models.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComputerStoreAdmin.Services
 {
     public class PGContext : DbContext
     {
-        public DbSet<Item> Items { get; set; }
+        public DbSet<Item>       Items   { get; set; }
         public DbSet<StoredItem> Storage { get; set; }
-
+        public DbSet<UserData>   Users   { get; set; }
+        public DbSet<Role>       Roles   { get; set; }
+        
         public static string Host { get; set; } = "";
         public static string Port { get; set; } = "";
         public static string Base { get; set; } = "";

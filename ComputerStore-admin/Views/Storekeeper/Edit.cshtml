@@ -3,21 +3,22 @@
 @using (Html.BeginForm("Edit", "Storekeeper", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.id);
-    <div class="full-width">
-        @Html.LabelFor(m => m.id_item, "Деталь", new { @class = "display-5" })
+    <div class="full-width center-align">
+        @Html.LabelFor(m => m.id_item, "Деталь", new { @class = "header-1" })
         <br />
-        @Html.DropDownListFor(m => m.id_item, new SelectList(ViewBag.Items, "id", "FullName"), Model.item == null ? "" : Model.item, null)
+        @Html.DropDownListFor(m => m.id_item, new SelectList(ViewBag.Items, "id", "FullName"), Model.item == null ? "" : Model.item, new { @class = "half-width" })
         <br /><br />
-        @Html.LabelFor(m => m.id_item, "Стоимость", new { @class = "display-5" })
+        @Html.LabelFor(m => m.id_item, "Стоимость", new { @class = "header-1" })
         <br />
-        @Html.TextBoxFor(m => m.buy_price)
+        @Html.TextBoxFor(m => m.buy_price, new { @class = "half-width" })
         <br /><br />
-        @Html.LabelFor(m => m.id_item, "Адрес", new { @class = "display-5" })
+        @Html.LabelFor(m => m.id_item, "Адрес", new { @class = "header-1" })
         <br />
-        @Html.TextBoxFor(m => m.place)
+        @Html.TextBoxFor(m => m.place, new { @class = "half-width" })
         <br /><br />
-        @Html.LabelFor(m => m.id_item, "На складе?", new { @class = "display-5" })
-        @Html.CheckBoxFor(m => m.isOnStorage)
+        @Html.LabelFor(m => m.id_item, "На складе?", new { @class= "header-1" })
+        <br/>
+        @Html.CheckBoxFor(m => m.isOnStorage, new { @class = "checkbox-default-size" })
         <br /><br />
     </div>
     <div class="full-width center-align">

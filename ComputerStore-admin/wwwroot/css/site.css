@@ -9,8 +9,21 @@ div.grid-element {
     margin: 1%;
 }
 
-div.full-width {
+.full-width {
     width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.checkbox-default-size {
+    width: 2vw;
+    height: 2vw;
+}
+
+label.header-1{
+    font-size: 26px;
 }
 
 div.center-align {

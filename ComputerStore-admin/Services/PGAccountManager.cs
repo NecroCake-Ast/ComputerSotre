@@ -1,8 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComputerStoreAdmin.Services
 {
@@ -53,7 +49,7 @@ namespace ComputerStoreAdmin.Services
         {
             switch (role)
             {
-                case "admin":
+                case "administrator":
                     return new ConnectData() { Login = _adminLogin, Password = _adminPassword };
                 case "seller":
                     return new ConnectData() { Login = _sellerLogin, Password = _sellerPassword };

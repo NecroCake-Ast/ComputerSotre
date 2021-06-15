@@ -1,0 +1,27 @@
+﻿@model RegistrationData
+
+@using (Html.BeginForm("Add", "Admin", FormMethod.Post))
+{
+    <div class="full-width center-align">
+        @Html.LabelFor(m => m.login, "Логин", new { @class = "header-1" })
+        <br />
+        @Html.TextBoxFor(m => m.login, new { @class = "half-width" })
+        <br /><br />
+        @Html.LabelFor(m => m.password, "Пароль", new { @class = "header-1" })
+        <br />
+        @Html.PasswordFor(m => m.password, new { @class = "half-width" })
+        <br /><br />
+        @Html.LabelFor(m => m.confirm, "Подтверждение", new { @class = "header-1" })
+        <br />
+        @Html.PasswordFor(m => m.confirm, new { @class = "half-width" })
+        <br /><br />
+        @Html.LabelFor(m => m.role, "Роль", new { @class = "header-1" })
+        <br />
+        @Html.DropDownListFor(m => m.role, new SelectList(ViewBag.Roles, "name", "name"), "", new { @class="half-width" })
+        <br /><br />
+    </div>
+    <div class="full-width center-align">
+        <input type="submit" value="Добавить" />
+    </div>
+    <br />
+}

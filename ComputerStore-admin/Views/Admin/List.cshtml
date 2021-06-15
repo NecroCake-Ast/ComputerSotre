@@ -1,0 +1,61 @@
+﻿@model UserSearchData
+
+@{
+    ViewData["Title"] = "Пользователи";
+}
+
+<div class="full-width center-align">
+    <h2>Зарегистрированные пользователи</h2>
+</div>
+
+@using (Html.BeginForm("Find", "Admin", FormMethod.Post))
+{
+    <div class="grid justify-content-between">
+        <div class="grid-element">
+            @Html.LabelFor(m => m.LoginEtalon, "Логин", new { @class = "display-5" })
+            <br />
+            @Html.TextBoxFor(m => m.LoginEtalon)
+        </div>
+    </div>
+    <div class="full-width center-align">
+        <input type="submit" value="Найти" />
+    </div> <br /><br />
+}
+
+@if (ViewBag.Msg != null)
+{
+    <br />
+    <div class="full-width center-align">
+        <h2>@ViewBag.Msg</h2>
+    </div>
+}
+
+@if (ViewBag.List != null)
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Логин</th>
+                <th>Роль</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (UserData data in ViewBag.List)
+            {
+                <tr>
+                    <td>
+                        @data.login
+                    </td>
+                    <td>
+                        @data.role
+                    </td>
+                    <td>
+                        @Html.ActionLink("Изменить пароль", "Edit", new { login = data.login })
+                        @Html.ActionLink("Удалить", "Delete", new { login = data.login })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,20 @@
+﻿@model ChangePasswordData
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.login);
+    <div class="full-width center-align">
+        @Html.LabelFor(m => m.password, "Пароль", new { @class = "header-1" })
+        <br />
+        @Html.PasswordFor(m => m.password, new { @class = "half-width" })
+        <br /><br />
+        @Html.LabelFor(m => m.confirm, "Подтверждение", new { @class = "header-1" })
+        <br />
+        @Html.PasswordFor(m => m.confirm, new { @class = "half-width" })
+        <br /><br />
+    </div>
+    <div class="full-width center-align">
+        <input type="submit" value="Сменить пароль" />
+    </div>
+    <br />
+}
