@@ -51,7 +51,7 @@ namespace ComputerStoreAdmin.Services.Admin
             {
                 new NpgsqlParameter("@name", (object)name??DBNull.Value)
             };
-            await context.Database.ExecuteSqlRawAsync("CALL remove_user(@name)", parameters);
+            await context.Database.ExecuteSqlRawAsync("CALL delete_user(@name)", parameters);
         }
 
         public async Task Update(string role, ChangePasswordData data)

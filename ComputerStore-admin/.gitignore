@@ -4,3 +4,6 @@
 **/.directory
 **/.vs
 **/.vscode
+**/.config/dotnet-tools.json
+**/wwwroot/cheque
+**/wwwroot/img

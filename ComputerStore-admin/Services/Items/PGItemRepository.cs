@@ -13,6 +13,12 @@ namespace ComputerStoreAdmin.Services.Items
             throw new NotImplementedException();
         }
 
+        public async Task<List<DeficitItem>> DeficitList(string role)
+        {
+            PGContext context = new PGContext(PGAccountManager.getConnectData(role));
+            return await context.DeficitItems.ToListAsync();
+        }
+
         public async Task<Item> Find(string role, int id)
         {
             PGContext context = new PGContext(PGAccountManager.getConnectData(role));

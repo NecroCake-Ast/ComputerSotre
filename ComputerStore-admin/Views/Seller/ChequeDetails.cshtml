@@ -1,0 +1,56 @@
+﻿@model ComputerStoreAdmin.Models.Seller.Cheque
+
+@{
+    ViewData["Title"] = "ChequeDetails";
+}
+
+<h1></h1>
+
+@if (Model != null)
+{
+    <div>
+        <h4>Cheque</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Номер заказа
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ChequeID)
+            </dd>
+            <dt class="col-sm-2">
+                Комплектация
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Complectation)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dt class="col-sm-2">
+                Стоимость
+            </dt>
+            <dd class="col-sm-10">
+                @string.Format("{0:C}", Model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                Детали
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (Cheque.ItemRecord curItem in Model.ItemList())
+                {
+                    @Html.Raw(curItem.ID + " - " + curItem.Name + "<br />");
+                }
+            </dd>
+            <dt class="col-sm-2"></dt>
+            <dd class="col-sm-10">
+                <a asp-controller="Seller" asp-action="LoadCheque" asp-route-id="@Model.ChequeID">
+                    Скачать
+                </a>
+            </dd>
+        </dl>
+    </div>
+}

@@ -35,6 +35,11 @@ namespace ComputerStoreAdmin.Services.Items
             return Task.Run(() => _data.Add(item));
         }
 
+        public Task<List<DeficitItem>> DeficitList(string role)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<Item> Find(string role, int id)
         {
             throw new System.NotImplementedException();

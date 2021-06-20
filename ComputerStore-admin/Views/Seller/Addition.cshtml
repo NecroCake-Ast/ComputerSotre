@@ -1,0 +1,33 @@
+﻿@model ServicesList
+
+@{
+    ViewData["Title"] = "Комплектации";
+}
+
+@using (Html.BeginForm("Buy", "Seller", FormMethod.Post))
+{
+
+    @Html.HiddenFor(m => m.ComplectID)
+    <table class="table table-striped table-borderless">
+        <tr><td width="20%" /> <td width="60%" /> <td width="20%" /></tr>
+        @for (int i = 0; i < Model.List.Count; i++)
+        {
+            <tr class="defaul-size">
+                <td>
+                    @Html.HiddenFor(m => m.List[i].ID)
+                    @Html.CheckBoxFor(m => m.List[i].isActive)
+                    <label>@(Model.List[i].Name)</label>
+                </td>
+                <td>
+                    <label>@(Model.List[i].Description)</label>
+                </td>
+                <td>
+                    <label>@(string.Format("{0:C}", Model.List[i].Price).Replace(' ', '\u00A0'))</label>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="full-width center-align">
+        <input type="submit" value="Подтвердить" />
+    </div>
+}

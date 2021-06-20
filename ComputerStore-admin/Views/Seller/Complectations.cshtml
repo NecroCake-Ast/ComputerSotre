@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Комплектации";
+}
+@if (ViewBag.List != null)
+{
+    <div class="comlect-grid justify-content-between">
+        @foreach (Complectation curComplect in ViewBag.List)
+        {
+            <div class="comlect-grid-element">
+                <label class="comlect-card-name">@curComplect.name</label>
+                <div class="card">
+                    <img class="comlect-card-bg" src="~/img/@(curComplect.id).png">
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        @if (curComplect.available)
+                        {
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <a class="hidden-link" asp-controller="Seller" asp-action="Addition" asp-route-id="@curComplect.id">
+                                    Оформить
+                                </a>
+                            </button>
+                        }
+                    </div>
+                    <small class="text-muted">
+                        @if (curComplect.available)
+                        {
+                            <label>@(string.Format("{0:C}", curComplect.price).Replace(' ', '\u00A0'))</label>
+                        }
+                        else
+                        {
+                            <label>Нет&nbspв&nbspналичии</label>
+                        }
+                    </small>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
+}

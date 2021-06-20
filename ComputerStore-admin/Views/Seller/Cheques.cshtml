@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Cheques";
+}
+
+<h1>Заказы</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Комплектация</th>
+            <th>Стоимость</th>
+            <th>Дата</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (ViewBag.List != null)
+    {
+        @foreach (Cheque item in ViewBag.List)
+        {
+                <tr>
+                    <td>@item.ChequeID</td>
+                    <td>@item.Complectation</td>
+                    <td>@item.Price</td>
+                    <td>@item.Date</td>
+                    <td>
+                        @Html.ActionLink("Детали", "ChequeDetails", new { id = item.ChequeID })
+                        <br />
+                        @Html.ActionLink("Скачать", "LoadCheque", new { id = item.ChequeID })
+                    </td>
+                </tr>
+        }
+    }
+    </tbody>
+</table>

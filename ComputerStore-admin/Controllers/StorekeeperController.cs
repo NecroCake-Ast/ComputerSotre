@@ -79,5 +79,12 @@ namespace ComputerStoreAdmin.Controllers
             await _storage.Remove(RoleName, id);
             return RedirectToAction("List");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Deficit()
+        {
+            ViewBag.List = await _item.DeficitList(RoleName);
+            return View();
+        }
     }
 }

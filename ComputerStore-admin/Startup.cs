@@ -1,6 +1,7 @@
 using ComputerStoreAdmin.Services;
 using ComputerStoreAdmin.Services.Admin;
 using ComputerStoreAdmin.Services.Items;
+using ComputerStoreAdmin.Services.Seller;
 using ComputerStoreAdmin.Services.Storage;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,8 @@ namespace ComputerStoreAdmin
             services.AddSingleton<IItemRepository>(s => new PGItemRepository());
             services.AddSingleton<IUsersRepository>(s => new PGUsersRepository());
             services.AddSingleton<IRolesRepository>(s => new PGRolesRepository());
+            services.AddSingleton<IComplectationRepository>(s => new PGComplectationRepository());
+            services.AddSingleton<IChequeRepository>(s => new PGChequeRepository());
 
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -66,6 +69,9 @@ namespace ComputerStoreAdmin
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute(
+                    name: "remove_user",
+                    pattern: "{controller=Admin}/{action=Delete}/{login}");
             });
         }
     }

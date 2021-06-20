@@ -75,5 +75,11 @@ namespace ComputerStoreAdmin.Controllers
             return RedirectToAction("List");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(string Login)
+        {
+            await _users.Remove(RoleName, Login);
+            return RedirectToAction("List");
+        }
     }
 }

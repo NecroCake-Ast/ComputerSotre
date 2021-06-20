@@ -11,5 +11,6 @@ namespace ComputerStoreAdmin.Services.Items
         public Task Add(string role, Item item);
         public Task Update(string role, Item item);
         public Task Remove(string role, int id);
+        public Task<List<DeficitItem>> DeficitList(string role);
     }
 }

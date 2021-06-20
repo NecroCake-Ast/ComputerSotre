@@ -46,6 +46,7 @@ namespace ComputerStoreAdmin.Controllers
             {
                 case "storekeeper": return RedirectToRoute(new { controller = "Storekeeper", action = "List" });
                 case "administrator": return RedirectToRoute(new { controller = "Admin", action = "List" });
+                case "seller": return RedirectToRoute(new { controller = "Seller", action = "Complectations" });
             }
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
